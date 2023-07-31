@@ -1,10 +1,10 @@
 import Home from '../views/pages/home/home';
-import BeritaDetail from '../views/pages/berita-detail/berita-detail';
+import Histori from '../views/pages/histori/histori';
 
 const Routes = {
   '/': Home,
   '/home': Home,
-  '/orders/:id': BeritaDetail,
+  '/history': Histori,
 };
 
 export default Routes;

@@ -6,7 +6,7 @@ class dashboardCard extends HTMLElement {
       amountSpentSinceStartDate: 0,
       amountToReachnextTier: 0,
       amountToAvoidDowngrade: 0,
-      downgradeDate: '-',
+      daysToDowngradeTier: '-',
       nextYearDowngradeTier: 0,
     };
     this.render();
@@ -22,12 +22,12 @@ class dashboardCard extends HTMLElement {
       amountSpentSinceStartDate,
       amountToReachnextTier,
       amountToAvoidDowngrade,
-      downgradeDate,
+      daysToDowngradeTier,
       nextYearDowngradeTier,
     } = this._dashboard;
 
     this.innerHTML = `
-            <h2 class="category__title">Rekapitulasi</h2>
+            <h2 class="category__title">Dashboard</h2>
             <div class="card-horizontal">
                 <button type="button" class="category-item bg-gradient-primary" 
                     id="ShowAll" 
@@ -52,7 +52,7 @@ class dashboardCard extends HTMLElement {
                         Target Amount 
                         </div>
                         <div class="category__value">${amountToReachnextTier}</div>
-                        <div class="category__content">Next Tier</div>
+                        <div class="category__content">To Next Tier</div>
 
                 </button>
                 <button type="button" class="category-item bg-gradient-third" 
@@ -65,7 +65,7 @@ class dashboardCard extends HTMLElement {
                         Target Keep
                         </div>
                         <div class="category__value">${amountToAvoidDowngrade}</div>
-                        <div class="category__content">Avoid Downgrade}</div>
+                        <div class="category__content">Avoid Downgrade</div>
 
                 </button>
                 <button type="button" class="category-item bg-gradient-fourth" 
@@ -77,8 +77,8 @@ class dashboardCard extends HTMLElement {
                         <div class="category__content">
                           Expire in
                         </div>
-                        <div class="category__value">${downgradeDate}</div>
-                        <div class="category__content">to Downgrade</div>
+                        <div class="category__value">${daysToDowngradeTier}</div>
+                        <div class="category__content">Days</div>
 
                 </button>
                 <button type="button" class="category-item bg-gradient-fiveth" 

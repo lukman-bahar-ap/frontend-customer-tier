@@ -1,21 +1,12 @@
 import './component/hero-elm';
 import './component/dashboard-card';
-import '../../components/berita-list';
-import '../../components/ukbm-list';
-import '../../components/ukbm-item-skeleton';
-import '../../components/notif-red-elm';
-import '../../components/notif-absen-elm';
 import DataSource from '../../../data/data-source';
 
 const Home = {
   async init() {
     this.dashboardElement = document.querySelector('dashboard-card');
-    this.ukbmListElement = document.querySelector('ukbm-list');
-    this.beritaListElement = document.querySelector('berita-list');
     this.mainContent = document.querySelector('#main-content');
     this.heroElement = document.querySelector('hero-elm');
-    this.notifElement = document.querySelector('notif-red-elm');
-    this.absenElement = document.querySelector('notif-absen-elm');
     this.msgSpan = document.getElementById('msgSpan');
   },
 
@@ -30,13 +21,11 @@ const Home = {
 
   async afterRender() {
     await this.init();
-    /* load 1. dashboard, 2.ukbm (save), 3.pencapaian (save) 4. berita */
     this.resetDashboard();
     await this.loadContent();
   },
 
   async loadContent() {
-    // request profil data (terutama id siswa dan id KRS)
     const profil = await DataSource.profil(123);
     if (profil.status === 200) {
       const {
@@ -64,7 +53,7 @@ const Home = {
         amountSpentSinceStartDate,
         amountToReachnextTier,
         amountToAvoidDowngrade,
-        downgradeDate,
+        daysToDowngradeTier: this.calculateDays(downgradeDate),
         nextYearDowngradeTier,
       };
       await this.loadDashboard(dashboard);
@@ -73,6 +62,16 @@ const Home = {
         customerName: '-', totalSpent: 0, currentTier: 'Bronze', startDateOfTierCalculation: '-', downgradeDate: '-',
       };
     }
+  },
+
+  calculateDays(nextYearDowngradeTier) {
+    const startDate = new Date();
+    const splitDate = nextYearDowngradeTier.toString().split('-');
+    const endDate = new Date(splitDate[0], splitDate[1], splitDate[2]);
+
+    const difference = endDate.getTime() - startDate.getTime();
+    const TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
+    return TotalDays;
   },
 
   async loadDashboard(result) {
@@ -84,7 +83,7 @@ const Home = {
       amountSpentSinceStartDate: 0,
       amountToReachnextTier: 0,
       amountToAvoidDowngrade: 0,
-      downgradeDate: '-',
+      daysToDowngradeTier: '-',
       nextYearDowngradeTier: 0,
     };
     this.dashboardElement.setDataDashboard = dashboard;

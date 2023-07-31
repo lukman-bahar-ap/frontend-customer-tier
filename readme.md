@@ -1,5 +1,7 @@
 # Customer Tier
 Welocome to my repo, this steps for using Customer Tier Project 
+## the ID CUSTOMERS : 123
+so you need add customer with id 123 before use this front-end
 
 <br>
 

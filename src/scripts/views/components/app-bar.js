@@ -47,9 +47,9 @@ class AppBar extends HTMLElement {
                             </a>
                         </li>
                         <li class="nav__item">
-                            <a href="#/histori" aria-label="History this year" accesskey="f">
+                            <a href="#/history" aria-label="History this year" accesskey="f">
                                 <i class="material-icons show-mobile-tab-only">history</i>
-                                <div class="hide-tab-only">History this Years</div>
+                                <div class="hide-tab-only">History Orders</div>
                             </a>
                         </li>
                     </ul>

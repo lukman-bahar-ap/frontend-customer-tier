@@ -29,14 +29,6 @@ const spaHelper = {
       DrawerInitiator._closeDrawer(event, drawer);
       app.renderPage();
     });
-
-    document.querySelector('#logout').addEventListener('click', async (e) => {
-      e.preventDefault();
-      await import('./exit-app')
-        .then((module) => module.default)
-        .then((exitApp) => exitApp())
-        .catch((error) => new Error(error));
-    });
   },
 };
 
