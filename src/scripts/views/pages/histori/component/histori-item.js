@@ -1,7 +1,6 @@
 class HistoriItem extends HTMLElement {
   set nilai(data) {
     this._nilai = data;
-    console.log(data);
     this.render();
   }
 

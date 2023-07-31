@@ -5,6 +5,9 @@ const IMG = {
   NOT_FOUND: 'img/not-found.jpg',
   IMG_BROKEN: 'img/img-broken.jpg',
   CIRCLE: 'img/circle.svg',
+  TIER_BRONZE: 'img/bronze.png',
+  TIER_SILVER: 'img/silver.png',
+  TIER_GOLD: 'img/gold.png',
 };
 
 export default IMG;
